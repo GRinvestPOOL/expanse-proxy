@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="img/favicon.ico.gif">
     <title>Expanse Proxy</title>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/bignumber.min.js"></script>
     <script type="text/javascript" src="js/web3.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
     <script type="text/javascript" src="js/stats.js"></script>
+    <script type="text/javascript" src="js/polo.js"></script>
 </head>
 <body>
     <div class="container">
@@ -38,18 +39,28 @@
             <strong>An error occured while polling proxy state.</strong> Make sure proxy is running.
         </div>
         <br>
-        <div class="col-md-2 text-center" style="width:25%;">
-            <div class="panel panel-info">
-                <div data-toggle="tooltip" data-placement="top" title="Current Hashrate" class="panel-heading">
-                    <h3 class="panel-title">Hashrate</h3>
+        <div class="col-md-2 text-center" style="width:20%;">
+            <div class="panel panel-primary">
+                <div data-toggle="tooltip" data-placement="top" title="Current Avg Network HashRate" class="panel-heading">
+                    <h3 class="panel-title">Avg HashRate</h3>
                 </div>
                 <div class="panel-body">
-                    <h4 id="getHashrate"></h4>
+                    <h4 id="avgHashrate"></h4>
                 </div>
             </div>
         </div>
-        <div class="col-md-2 text-center" style="width:25%;">
-            <div class="panel panel-primary">
+        <div class="col-md-2 text-center" style="width:20%;">
+            <div class="panel panel-info">
+                <div data-toggle="tooltip" data-placement="top" title="Current Avg Network BlockTime" class="panel-heading">
+                    <h3 class="panel-title">Avg BlockTime</h3>
+                </div>
+                <div class="panel-body">
+                    <h4 id="avgBlocktime"></h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 text-center" style="width:20%;">
+            <div class="panel panel-danger">
                 <div data-toggle="tooltip" data-placement="top" title="Current Difficulty" class="panel-heading">
                     <h3 class="panel-title">Difficulty</h3>
                 </div>
@@ -58,7 +69,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-2 text-center" style="width:25%;">
+        <div class="col-md-2 text-center" style="width:20%;">
             <div class="panel panel-warning">
                 <div data-toggle="tooltip" data-placement="top" title="Last Block Number" class="panel-heading">
                     <h3 class="panel-title">Last Block</h3>
@@ -68,7 +79,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-2 text-center" style="width:25%;">
+        <div class="col-md-2 text-center" style="width:20%;">
             <div class="panel panel-success">
                 <div data-toggle="tooltip" data-placement="top" title="Time Since Latest Block" class="panel-heading">
                     <h3 class="panel-title">Last Block Time</h3>
@@ -110,6 +121,15 @@
             </div>
           </div>
         </div>
+        <div class="clearfix"></div>
+        <div class="panel panel-default">
+          <div class="panel-heading text-center"><b>Poloniex Chart</b> <span style="font-size: 12px;"  class="glyphicon glyphicon-th"></span></div>
+          <div class="panel-body text-center">
+            <div class="well well-sm" style="margin-bottom:5px;">
+              <div id="tradechart"  style="height: 500px; min-width: 310px"></div>
+            </div>
+          </div>
+        </div>
     </div>
     <footer class="footer">
         <div class="container">
@@ -118,5 +138,7 @@
             </div>
         </div>
     </footer>
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
 </body>
 </html>
