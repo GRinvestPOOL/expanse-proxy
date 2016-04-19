@@ -7,7 +7,8 @@
 body {
   padding-top: 10px;
   padding-bottom: 0px;
-  background-color: #505050;
+  /* background-color: #505050; */
+  background: url(../img/space_bg.jpg) center center no-repeat fixed;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
