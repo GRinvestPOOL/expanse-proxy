@@ -100,7 +100,7 @@ $(document).ready(function() {
     });
 
     var refreshHash = setInterval(function() {
-        $.getJSON("http://162.243.239.186:8001/?url=http://162.243.239.186/exp.json").done(function(data) {
+        $.getJSON("http://162.243.239.186:8000/?url=http://162.243.239.186/exp.json").done(function(data) {
             var info = data;
             var hash = info.data.avgHashrate;
             var block = info.data.avgBlocktime;
